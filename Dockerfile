@@ -3,7 +3,7 @@ MAINTAINER  Jim Myhrberg "contact@jimeh.me"
 
 RUN apt-get update -y && apt-get -y install build-essential libssl-dev libperl-dev pkg-config
 
-ENV ZNC_VERSION 1.6.0
+ARG ZNC_VERSION=1.6.3
 ADD http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz /src/
 
 WORKDIR /src/
