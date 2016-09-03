@@ -9,11 +9,15 @@ ADD http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz /src/
 WORKDIR /src/
 RUN tar -zxf "znc-${ZNC_VERSION}.tar.gz" \
  && cd znc-${ZNC_VERSION} && ./configure && make && make install \
- && useradd znc
+ && rm -rf /src/znc-${ZNC_VERSION}*
 
 ADD         start-znc /usr/local/bin/
 ADD         znc.conf.default /src/
-RUN         chmod 644 /src/znc.conf.default
+RUN         chmod 644 /src/znc.conf.default \
+	    && mkdir /znc-data && chgrp root /znc-data && chmod g+w /znc-data
+
+
+VOLUME ["/znc-data"]
 
 EXPOSE      6667
 ENTRYPOINT  ["/usr/local/bin/start-znc"]
