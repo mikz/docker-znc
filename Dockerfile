@@ -1,6 +1,6 @@
 FROM alpine:edge
 
-RUN apk add --update znc znc-dev
+RUN apk add --update znc znc-dev znc-extra
 
 ADD         start-znc /usr/local/bin/
 ADD         znc.conf.default /src/
