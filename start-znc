@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/bin/sh
 
 # Options.
 DATADIR="/znc-data"
@@ -24,7 +24,7 @@ fi
 # Create default config if it doesn't exist
 if [ ! -f "${DATADIR}/configs/znc.conf" ]; then
   mkdir -p "${DATADIR}/configs"
-  cp /src/znc.conf.default "${DATADIR}/configs/znc.conf"
+  cp -v /src/znc.conf.default "${DATADIR}/configs/znc.conf"
 fi
 
 # Start ZNC.
